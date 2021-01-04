@@ -7,7 +7,7 @@ Microservices for Demo project (Webshop)
 languages that talk to each other via events, REST API.
 
 [![Architecture of
-microservices](./architecture.jpg)](./architecture.jpg)
+microservices](./architecture_.jpg)](./architecture_.jpg)
 
 
 | Service                                              | Language      | Description                                                                                                                       |
