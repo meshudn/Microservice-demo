@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import Product from './components/product';
 
 
 class App extends React.Component {
@@ -26,10 +27,16 @@ class App extends React.Component {
 
 
     render() {
-        const product_temp = this.state.products;
-        const productlist = product_temp.map((index) => {
-            
-        });
+        const productlist = [];
+        try {
+            var temp = this.state.products;
+            temp.map(function (index) {
+                return productlist.push(<Product key={index.product_id} img={index.product_image} name={index.product_name} price={index.price}/>);
+            });
+        }
+        catch{
+            console.log('conversation happening');
+        }
         return (
             <div className="header">
                 <header>
@@ -39,9 +46,6 @@ class App extends React.Component {
                 <div className="container">
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {productlist}
-
-
-
                     </div>
                 </div>
             </div>
