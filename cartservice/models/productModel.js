@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-// Define schema for todo items
+// Define schema for cart items
 const cartSchema = new Schema({
     product_name: {
         type: String,

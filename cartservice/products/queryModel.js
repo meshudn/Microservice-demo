@@ -9,13 +9,13 @@ class ProductQuery {
     }
 
     /**
-     * @param {String} name
+     * @param {String} product_name
+     * @param {String} product_price
+     * @param {String} product_img
      */
-    create(name) {
-        const newCartItem = { name, done: false };
-        // eslint-disable-next-line new-cap
+    create(product_name, product_price, product_img) {
+        const newCartItem = { product_name: product_name, product_price: product_price, product_img: product_img };
         const cart = new this.model(newCartItem);
-
         return cart.save();
     }
 
