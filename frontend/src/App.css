@@ -40,3 +40,43 @@
 .card{
   margin-top: 20px;
 }
+.smallFont {
+  font-size: 12px;
+  color: #333;
+}
+.cartpageul{
+  display: flex;
+}
+.cartpageul li {
+  margin-right: 15px;
+}
+.cartpage .header{
+  margin-top: 40px;
+}
+.cartpage .header h3{
+  padding-left: 15px;
+}
+.cart-body{
+  box-shadow: 1px 1px 15px #fff;
+}
+.cartItem img{
+  width: 180px;
+  margin-right: 10px;
+}
+.cartItem h4{
+  padding-top: 5px;
+}
+.cartItem button{
+  font-size: 13px;
+}
+.cart-body{
+  padding: 15px;
+  box-shadow: 8px 10px 15px #f9f9f9;
+}
+.cart-amount-body{
+   padding: 15px;
+   box-shadow: 8px 10px 15px #f9f9f9;
+}
+.cart-content{
+  margin-bottom: 40px;
+}

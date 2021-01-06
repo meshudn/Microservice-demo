@@ -41,6 +41,16 @@ app.delete('/carts', (req, res) => {
     }).catch((error) => console.log(error));
 });
 
+// delete a cart item
+app.delete('/carts/all', (req, res) => {
+    const item = req.body;
+    productQuery.deleteById(item._id).then((ok) => {
+        console.log(ok);
+        console.log(`Deleted record with id: ${item._id}`);
+        res.status(200).json([]);
+    }).catch((error) => console.log(error));
+});
+
 app.listen(port, () => {
     console.log(`Cart Service listening at http://localhost:${port}`)
 });
