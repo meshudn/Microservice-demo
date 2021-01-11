@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = 3052;
 var mysql = require('mysql');
 const cors = require('cors');
 var bodyParser = require('body-parser')
 
 app.use(cors());
 app.use(bodyParser.json());
-
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -35,11 +34,11 @@ app.get('/products', cors(), (req, res) => {
 });
 
 
-app.post('/orderrequest', cors(), (req, res) => {
-        res.send("done");
-});
-
-
 app.listen(port, () => {
-    console.log(`Apigateway Service listening at http://localhost:${port}`)
+    console.log(`Cart Service listening at http://localhost:${port}`)
 });
+
+
+
+
+
