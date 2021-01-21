@@ -9,12 +9,13 @@ class ProductQuery {
     }
 
     /**
+     * @param {String} product_id
      * @param {String} product_name
      * @param {String} product_price
      * @param {String} product_img
      */
-    create(product_name, product_price, product_img) {
-        const newCartItem = { product_name: product_name, product_price: product_price, product_img: product_img };
+    create( product_name, product_price, product_img) {
+        const newCartItem = {product_name: product_name, product_price: product_price, product_img: product_img };
         const cart = new this.model(newCartItem);
         return cart.save();
     }
@@ -24,26 +25,33 @@ class ProductQuery {
     }
 
     /**
-     * @param {Integer} id
+     * @param {string} id
      */
     findById(id) {
         return this.model.findById(id);
     }
 
     /**
-     * @param {integer} id
+     * @param {string} id
      */
     deleteById(id) {
         return this.model.findByIdAndDelete(id);
     }
+    /**
+     * @param {string} id
+     */
+    deleteMany(id) {
+        const query = { _id: id };
+        return this.model.deleteMany(query,);
+    }
 
     /**
      *
-     * @param {integer} id
+     * @param {string} product_id
      * @param {*} object
      */
-    updateById(id, object) {
-        const query = { _id: id };
+    updateById(product_id, object) {
+        const query = { _id: product_id };
         return this.model.findOneAndUpdate(query, { $set: { product_name: object.product_name, product_price: object.product_price, product_img: object.product_img } });
     }
 }
