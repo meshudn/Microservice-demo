@@ -5,14 +5,16 @@ import CartComponent from './cartComponent';
 import {Link} from "react-router-dom";
 
 class Carts extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             products: {},
             totalAmount: 0,
             productSum: 0,
+            productItemCount: 0,
             orderResponse: false
         }
+        this.handleRemoves = this.handleRemoves.bind(this);
     }
 
 
@@ -27,6 +29,8 @@ class Carts extends React.Component {
                 })
             });
     }
+
+
 
     handleCheckoutClick(){
         /*
@@ -57,15 +61,46 @@ class Carts extends React.Component {
     handleEmptyCart(){
 
     }
+    /*
+    * @param {integer} id
+    * */
+    handleRemoves(){
+
+        console.log("clicks: ");
+
+       /* axios.delete('http://localhost:3050/carts/'+id, {
+            order_request: "true"
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+*/
+
+    }
 
     render() {
         console.log("carts page");
         const cartList = [];
         try {
+            var temptotal = 0;
             var temp = this.state.products;
+            var count = 0;
             temp.map(function (index) {
-                return cartList.push(<CartComponent  key={index.product_id} img={index.product_image} name={index.product_name} price={index.price}/>);
+                if(index.product_price){
+                    temptotal = temptotal + parseInt(index.product_price);
+                    count+= 1;
+                }
+                return cartList.push(<CartComponent key={index._id}  id={index._id} img={index.product_img} name={index.product_name} price={index.product_price}/>);
             });
+
+            this.state.productSum = temptotal;
+            if(temptotal>0)
+               temptotal += 20;
+            this.state.totalAmount = ""+temptotal;
+            this.state.productItemCount = ""+count;
         }
         catch{
             console.log('conversation happening component before mount');
@@ -73,11 +108,12 @@ class Carts extends React.Component {
         var orderResponseText;
         if(this.state.orderResponse){
             orderResponseText = "Successfully order generated"
+            this.state.orderResponse=false;
         }
         return (
             <div className="cartpage container">
                 <div className="row header">
-                    <h3>Shopping Cart (2 items)</h3>
+                    <h3>Shopping Cart ({this.state.productItemCount} items)</h3>
                     <ul className="list-unstyled ml-auto cartpageul">
                         <li><a onClick={() => this.handleEmptyCart()} className="btn btn-outline-danger" href="">Empty Cart</a></li>
                         <li><Link className="btn btn-outline-primary" to="/">Continue Shopping</Link></li>

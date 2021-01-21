@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import '../App.css';
 class Product extends React.Component{
     constructor(props) {
         super(props);
@@ -23,10 +24,10 @@ class Product extends React.Component{
         return (
             <div className="col">
                 <div className="card">
-                    <img src={this.props.img} className="card-img-top" alt="..."/>
+                    <img src={this.props.img} className="card-img-top img-fluid" alt="..."/>
                     <div className="card-body">
                         <h5 className="card-title">{this.props.name}</h5>
-                        <h6 className="card-text">Price: {this.props.price}</h6>
+                        <h6 className="card-text">Price: {this.props.price} €</h6>
                     </div>
                     <div className="card-footer">
                         <button onClick={() => this.handleClick()} className="btn btn-primary">Add to cart</button>
