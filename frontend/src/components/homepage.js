@@ -46,8 +46,8 @@ class Homepage extends React.Component {
         }
 
         return (
-            <div className="homepage">
-                    <div className="row row-cols-1 row-cols-md-3 g-4">
+            <div className="homepage container">
+                    <div className="row row-cols-1 row-cols-md-3 g-3">
                         {productlist}
                     </div>
             </div>
