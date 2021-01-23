@@ -43,6 +43,5 @@ microservices](./architecture_.jpg)](./architecture_.jpg)
   To collaborate and communicate services in a microservice-based application.
 - **[Circuit Breaker Pattern](https://microservices.io/patterns/reliability/circuit-breaker.html)**
   To prevent a network or service failure from cascading to other services.
-- **[Kubernetes](https://kubernetes.io)**
-  The app is designed to run on Kubernetes (both locally on "Docker for
-  Desktop", as well as on the cloud).
+- **[Service Instance per container pattern](https://kubernetes.io)**
+  All the services will be built as a (Docker) container image and deploy each service instance as a container in the kubernetes.
