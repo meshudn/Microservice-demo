@@ -42,6 +42,6 @@ microservices](./architecture_.jpg)](./architecture_.jpg)
 - **[Messaging Pattern](https://microservices.io/patterns/communication-style/messaging.html)**
   To collaborate and communicate services in a microservice-based application.
 - **[Circuit Breaker Pattern](https://microservices.io/patterns/reliability/circuit-breaker.html)**
-  To prevent a network or service failure from cascading to other services.
+  To prevent the network or service failure from cascading to other services.
 - **[Service Instance per container pattern](https://kubernetes.io)**
   All the services will be built as a (Docker) container image and deploy each service instance as a container in the kubernetes.
