@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-
 class CartComponent extends React.Component{
     constructor(props) {
         super(props);
@@ -16,7 +15,6 @@ class CartComponent extends React.Component{
             .catch(function (error) {
                 console.log(error);
             });
-
     }
     render() {
         return (
