@@ -19,7 +19,7 @@ class Homepage extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3052/products')
+        axios.get('http://localhost:3002/products')
             .then(response => {
                 const products = response.data;
                 console.log(JSON.stringify(products));
@@ -29,7 +29,6 @@ class Homepage extends React.Component {
                 })
             });
     }
-
     render() {
         const productlist = [];
         if(this.state.isCartMenuClick){
