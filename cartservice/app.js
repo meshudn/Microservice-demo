@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3032;
+const port = process.env.PORT || 3032;
 var bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,7 +8,7 @@ const cors = require('cors');
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/cart_db');
+mongoose.connect('mongodb://mongodb-service:27017/cart_db');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {

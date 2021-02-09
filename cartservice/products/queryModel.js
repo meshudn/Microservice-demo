@@ -19,6 +19,19 @@ class ProductQuery {
         const cart = new this.model(newCartItem);
         return cart.save();
     }
+    
+    /**
+     * @param {String} product_id
+     * @param {String} product_name
+     * @param {String} product_price
+     * @param {String} product_img
+     */
+    create( product_name, product_price, product_img) {
+        const newCartItem = {product_name: product_name, product_price: product_price, product_img: product_img };
+        const cart = new this.model(newCartItem);
+        return cart.save();
+    }
+
 
     findAll() {
         return this.model.find();
