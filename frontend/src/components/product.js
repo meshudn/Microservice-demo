@@ -8,7 +8,7 @@ class Product extends React.Component{
     }
     handleClick(){
         console.log("product child click event");
-        axios.post('http://localhost:3032/carts', {
+        axios.post('http://134.109.233.159:30032/carts/', {
             product_name: this.props.name,
             product_price: this.props.price,
             product_img: this.props.img

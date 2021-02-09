@@ -7,8 +7,8 @@ class CartComponent extends React.Component{
     }
     handleRemoves(e, id){
         console.log("click" + id);
-
-        axios.delete('http://localhost:3032/carts/'+id, )
+        //var cartService = process.env.CARTSERVICE || "http://localhost:3032/carts/";
+        axios.delete("http://134.109.233.159:30032/carts/"+id, )
             .then(function (response) {
                 console.log(response);
             })
