@@ -19,7 +19,8 @@ class Homepage extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:3002/products')
+        // var productQueryString = process.env.INVENTORYSERVICE || "http://localhost:3002/products";
+        axios.get("http://134.109.233.159:30004/products")
             .then(response => {
                 const products = response.data;
                 console.log(JSON.stringify(products));
