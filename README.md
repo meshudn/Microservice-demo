@@ -34,7 +34,7 @@ microservices](./architecture_.jpg)](./architecture_.jpg)
 - **[Saga Pattern](https://microservices.io/patterns/data/saga.html)**
   A saga is a sequence of local transactions. Each local transaction updates the database and publishes a message or event to trigger the next local transaction in the saga.
 - **[Command Query Responsibility Segregation (CQRS)](https://microservices.io/patterns/data/cqrs.html)**
-  The application keeps the replica up to data by subscribing to Domain events published by the service that own the data.
+  The wehbshops application keeps the replica up to data by subscribing to Domain events published by the service that own the data.
 - **[Event sourcing Pattern](https://microservices.io/patterns/data/event-sourcing.html)**
   To reliably/atomically update the database and publish messages/events.
 - **[API Gateway / Backends for Frontends Pattern](https://microservices.io/patterns/apigateway.html)**
