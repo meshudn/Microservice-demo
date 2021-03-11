@@ -82,9 +82,9 @@ app.get('/products', cors(), (req, res) => {
 
 app.get('/products/:id', cors(), (req, res) => {
     const item = req.params.id;
-    const convertedItem = parseInt(item);
-    if(Number.isInteger(convertedItem)){
-        var queryStr = "SELECT * FROM products WHERE products.product_id = " + item;
+    console.log("is number: "+ !isNaN(item));
+    if(!isNaN(item)){
+        var queryStr = "SELECT * FROM products WHERE products.product_id = " + item ;
         con.query(queryStr, function (error, result, fields) {
             if (error) {
                 console.log(error);
@@ -139,6 +139,7 @@ app.get('/products/:id', cors(), (req, res) => {
         res.status(400);
         res.send("Bad request. Please check the data format of the product id.");
     }
+
 
 });
 
