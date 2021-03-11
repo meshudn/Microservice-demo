@@ -58,8 +58,8 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 //     database: "product_db"
 // });
 // $link = mysql_connect('http://10.105.125.0:3306/', 'root', '1234');
-var con = mysql.createConnection('mysql://root:1234@10.105.125.0:3306/product_db');
-//var con = mysql.createConnection('mysql://root:@localhost/order_db');
+//var con = mysql.createConnection('mysql://root:1234@10.105.125.0:3306/product_db');
+var con = mysql.createConnection('mysql://root:@localhost/order_db');
 
 con.connect(function (err) {
     if (err) throw err;
@@ -93,7 +93,7 @@ app.get('/products/:id', cors(), (req, res) => {
                     res.send("Bad request. Please check the data format of the product id.");
                 }
                 res.status(404);
-                res.send(error);
+                res.send("Please check the requested path. Or bad request can not proceed");
             }
             if(result.length > 0){
                 if(result){
@@ -107,6 +107,34 @@ app.get('/products/:id', cors(), (req, res) => {
 
         });
     }
+
+    else if(typeof item === 'string'){
+        console.log("search key: "+item);
+        var queryStr = "SELECT * FROM products WHERE products.quantity LIKE '" + item + "%' OR products.price LIKE '"+ item +"%' OR products.product_name LIKE '"+ item + "%'";
+        con.query(queryStr, function (error, result, fields) {
+            if (error) {
+                console.log(error);
+                if(error.code == 'ER_BAD_FIELD_ERROR'){
+                    res.status(400);
+                    res.send("Bad request. Please check the data format of the product id.");
+                }
+                res.status(404);
+                res.send("Please check the requested path. Or bad request can not proceed");
+            }
+            if(result.length > 0){
+                if(result){
+                    res.status(200);
+                    res.send(result);
+                }
+            }else{
+                console.log("not found: "+ result);
+                res.status(404);
+                res.send("Not Found");
+            }
+
+        });
+    }
+
     else{
         res.status(400);
         res.send("Bad request. Please check the data format of the product id.");
@@ -125,15 +153,10 @@ app.post('/products', cors(), (req, res) => {
             res.send("Bad request");
         }
         //console.log("data" + JSON.stringify(data));
-        if(result.length > 0){
+        if(result){
             res.status(201);
-            res.send("location: /products/");
-        }else{
-            res.status(204);
-            res.send("No content created");
+            res.send("location: /products/" + result.insertId);
         }
-
-        //console.log(res);
     });
 });
 
@@ -144,6 +167,8 @@ app.delete('/products/:id', cors(), (req, res) => {
     con.query(queryStr, function (error, result, fields) {
         if (error) {
             console.log(error);
+            res.status(400);
+            res.send("Bad request. Please check your requested path.");
         }
         //console.log("data" + JSON.stringify(data));
         if(result.length > 0){
@@ -172,6 +197,8 @@ app.put('/products/:id', cors(), (req, res) => {
     con.query(queryStr, function (error, result, fields) {
         if (error) {
             console.log(error);
+            res.status(400);
+            res.send("Bad request. Please check your requested path.");
         }
         //console.log("data" + JSON.stringify(data));
         res.status(200);
