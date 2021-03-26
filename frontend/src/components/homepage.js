@@ -46,10 +46,20 @@ class Homepage extends React.Component {
         }
 
         return (
-            <div className="homepage container">
+            <div>
+                <div className="">
+                    <div className="slider">
+                        <img src="coverphoto.png" alt="cover photo" className="img-fluid"/>
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-center new-collection"><img src="hot_products.svg" width="140" className="img-fluid" alt=""/></h2>
+                </div>
+                <div className="homepage container">
                     <div className="row row-cols-1 row-cols-md-3 g-3">
                         {productlist}
                     </div>
+                </div>
             </div>
         );
     }

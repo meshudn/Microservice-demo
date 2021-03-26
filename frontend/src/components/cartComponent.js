@@ -6,9 +6,10 @@ class CartComponent extends React.Component{
         super(props);
     }
     handleRemoves(e, id){
-        console.log("click" + id);
+        e.preventDefault();
+        var id = 1;
         //var cartService = process.env.CARTSERVICE || "http://localhost:3032/carts/";
-        axios.delete("http://134.109.233.159:30032/carts/"+id, )
+        axios.delete("http://134.109.233.159:30032/carts/1", )
             .then(function (response) {
                 console.log(response);
             })
@@ -20,9 +21,9 @@ class CartComponent extends React.Component{
         return (
             <div className="cartItem">
                 <img src={this.props.img} className="rounded float-left" alt=""/>
-                <h4>{this.props.name}</h4>
-                <h5>Price: {this.props.price} €</h5>
-                <button onClick={(e, id) => this.handleRemoves(e,this.props.id)} className="btn btn-outline-danger btn-sm">remove</button>
+                <h5>{this.props.name}</h5>
+                <h6>Price: {this.props.price} €</h6>
+                <button onClick={(e, id) => this.handleRemoves(e,this.props.id)} className="btn btn-outline-danger btn-sm">Remove</button>
             </div>
         )
     }
