@@ -19,7 +19,7 @@ class Carts extends React.Component {
 
 
     componentDidMount() {
-        axios.get('http://localhost:3032/carts')
+        axios.get('http://134.109.233.159:30032/carts/1')
             .then(response => {
                 const products = response.data;
                 console.log("carts page: "+ JSON.stringify(products));
@@ -38,9 +38,21 @@ class Carts extends React.Component {
         * Order request
         * */
         this.customerId = 1;
-        axios.post('http://localhost:8080/orderrequest', {
-           order_request: "true"
+        axios.post('http://134.109.233.159:30011/orders', {
+            cart_id: "1",
+            payment_id: "1",
+            is_paid: "true",
+            address: "09126, chemnitz",
+            status: "Warehouse picking"
         })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        axios.delete("http://134.109.233.159:30032/carts/1" )
             .then(function (response) {
                 console.log(response);
             })
@@ -58,8 +70,16 @@ class Carts extends React.Component {
             [name] : value
         });
     }
-    handleEmptyCart(){
-
+    handleEmptyCart(e){
+        e.preventDefault();
+        console.log("empty cart clicked");
+        axios.delete("http://134.109.233.159:30032/carts/1" )
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     /*
     * @param {integer} id
@@ -93,7 +113,7 @@ class Carts extends React.Component {
                     temptotal = temptotal + parseInt(index.product_price);
                     count+= 1;
                 }
-                return cartList.push(<CartComponent key={index._id}  id={index._id} img={index.product_img} name={index.product_name} price={index.product_price}/>);
+                return cartList.push(<CartComponent key={index._id}  id={index._id} img={index.product_image} name={index.product_name} price={index.product_price}/>);
             });
 
             this.state.productSum = temptotal;
@@ -115,7 +135,7 @@ class Carts extends React.Component {
                 <div className="row header">
                     <h3>Shopping Cart ({this.state.productItemCount} items)</h3>
                     <ul className="list-unstyled ml-auto cartpageul">
-                        <li><a onClick={() => this.handleEmptyCart()} className="btn btn-outline-danger" href="">Empty Cart</a></li>
+                        <li><a onClick={(e) => this.handleEmptyCart(e)} className="btn btn-outline-danger" href="">Empty Cart</a></li>
                         <li><Link className="btn btn-outline-primary" to="/">Continue Shopping</Link></li>
                     </ul>
                 </div>
@@ -129,10 +149,10 @@ class Carts extends React.Component {
                             <div className="card-body">
                                 <h5 className="card-title">Total Amount</h5>
                                 <br/>
-                                <h6 className="card-subtitle mb-2 text-muted">Amount: ${this.state.productSum}</h6>
-                                <h6 className="card-subtitle mb-2 text-muted">Shipping: $10</h6>
+                                <h6 className="card-subtitle mb-2 text-muted">Amount: €{this.state.productSum}</h6>
+                                <h6 className="card-subtitle mb-2 text-muted">Shipping: €10</h6>
                                 <hr/>
-                                <h6 className="card-subtitle mb-2 text-muted">Total Amount (including VAT): ${this.state.totalAmount}</h6>
+                                <h6 className="card-subtitle mb-2 text-muted">Total Amount (including VAT): €{this.state.totalAmount}</h6>
                                 <br/>
                                 <button onClick={() => this.handleCheckoutClick()}  className="btn btn-sm btn-block btn-primary">Checkout</button>
                             </div>
@@ -141,7 +161,18 @@ class Carts extends React.Component {
                 </div>
 
                 <div className="row">
-                    <p className="text-success">{orderResponseText}</p>
+                    {orderResponseText &&
+
+                    <div className="orderpage row">
+                        <div className="col-12">
+                            <h3>Your Order is complete!</h3>
+                            <p>Order Confirmation ID</p>
+                            <h6>616eff49-8df7-11eb-8010-4e3e07bc62cf</h6>
+                            <p>Shipping Tracking ID</p>
+                            <h6>OI-44712-223541653</h6>
+                        </div>
+                    </div>
+                    }
                 </div>
             </div>
         );

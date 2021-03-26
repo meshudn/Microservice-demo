@@ -5,9 +5,46 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  background: #f9f9f9;
 
+}
+.main_body{
+  width: 100%;
+}
+.slider{
+  background-color: #000;
+  opacity: 0.9;
+}
+.new-collection{
+  margin-top: 50px;
+  margin-bottom: 30px;
+  color: #282c34;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: "Lato";
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.navbar-header{
+  background-color: #f9f9f9 !important;
+}
+.nav-item .nav-link{
+  color: #282c34;
+  font-weight: 700;
+  font-family: "Lato";
+}
+.footer-container{
+  margin-top: 50px;
+  background-color: #f0f0f0;
+  margin-bottom: -20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.cartItem{
+  margin-top: 20px;
+}
+.cartItem h6{
+  color: #8d828c;
 }
