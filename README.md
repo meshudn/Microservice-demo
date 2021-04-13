@@ -3,7 +3,7 @@ Microservices for Demo project (Webshop)
 
 ## Architecture
 
-**Webshop** is composed of 09 microservices written in different
+**Webshop** is composed of 06 microservices written in different
 languages that talk to each other via events, REST API.
 
 [![Architecture of
