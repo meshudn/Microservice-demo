@@ -90,7 +90,7 @@ app.get('/products/:id', cors(), (req, res) => {
                 console.log(error);
                 if(error.code == 'ER_BAD_FIELD_ERROR'){
                     res.status(400);
-                    res.send("Bad request. Please check the data format of the product id.");
+                   
                 }
                 res.status(404);
                 res.send("Please check the requested path. Or bad request can not proceed");
