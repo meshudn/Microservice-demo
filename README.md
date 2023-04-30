@@ -1,5 +1,5 @@
 # Microservice Demo
-Microservices for Demo project (Webshop)
+A demo application build using Microservice patterns.
 
 ## Architecture
 
