@@ -1,10 +1,12 @@
 # Microservice Demo
-A demo application build using Microservice patterns.
+A demo application build using Microservice architecture.
 
 ## Architecture
 
 **Webshop** is composed of 06 microservices written in different
 languages that talk to each other via events, REST API.
+
+By using a microservices architecture with different programming languages and communication protocols, developers can build a more modular, scalable, and resilient webshop. Each microservice can be deployed and scaled independently, and if one microservice fails, it does not affect the rest of the webshop. This also allows for more flexibility in developing new features, as developers can work on each microservice separately without disrupting the entire system.
 
 [![Architecture of
 microservices](./architecture_.jpg)](./architecture_.jpg)
