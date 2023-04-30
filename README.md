@@ -1,4 +1,4 @@
-# Microservice Demo (Under development)
+# Microservice Demo
 Microservices for Demo project (Webshop)
 
 ## Architecture
